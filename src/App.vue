@@ -12,20 +12,16 @@
         <i class="fas fa-arrow-right icon"></i>
       </div>
     </form>
-    <div class="items-container">
-      <Listitem :list="list" />
-    </div>
+    <Listcontainer :list="list" />
   </div>
 </template>
 
 <script>
-import Listitem from "./components/Listitem.vue";
+import Listcontainer from "./components/Listcontainer.vue";
 
 export default {
   name: "App",
-  components: {
-    Listitem,
-  },
+  components: { Listcontainer },
   data() {
     return {
       tempItem: "",
@@ -37,7 +33,7 @@ export default {
     addToList() {
       this.list.push(this.tempItem);
       this.tempItem = "";
-      console.log(this.list);
+      // console.log(this.list);
 
       // to do: Validation and empty inputs
     },
@@ -61,6 +57,11 @@ form {
   display: grid;
   grid-template-columns: 90% 10%;
 }
+.task-input {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  align-items: center;
+}
 input {
   border: none;
   border-bottom: 2px solid rgb(182, 182, 182);
@@ -71,11 +72,5 @@ input {
   font-size: 1rem;
   margin-left: 10px;
   cursor: pointer;
-}
-.items-container {
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 2rem;
 }
 </style>

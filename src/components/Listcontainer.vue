@@ -1,6 +1,8 @@
 <template>
   <ul>
-    <li v-for="item in list" :key="item"></li>
+    <li v-for="taskName in list" :key="taskName">
+      <Task :taskName="taskName" :list="list" />
+    </li>
   </ul>
 
   <!-- <div class="modal hidden">
@@ -18,21 +20,12 @@
 </template>
 
 <script>
+import Task from "./Task.vue";
 export default {
-  name: "Listitem",
-  props: ["list", "itemShowing"],
+  name: "Listcontainer",
+  props: ["list"],
   components: {
-    Actionbuttons,
-  },
-  methods: {
-    taskFinished() {
-      this.isTaskFinished = !this.isTaskFinished;
-    },
-  },
-  data() {
-    return {
-      isTaskFinished: false,
-    };
+    Task,
   },
 };
 </script>
@@ -50,14 +43,5 @@ li {
 }
 .hidden {
   display: none;
-}
-
-.list-item {
-  display: grid;
-  grid-template-columns: 70% 10% 10% 10%;
-  align-items: center;
-}
-.strikethrough {
-  text-decoration: line-through;
 }
 </style>
