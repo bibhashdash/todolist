@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="list-container">
     <li v-for="taskName in list" :key="taskName">
       <Task :taskName="taskName" :list="list" />
     </li>
@@ -21,6 +21,7 @@
 
 <script>
 import Task from "./Task.vue";
+
 export default {
   name: "Listcontainer",
   props: ["list"],
@@ -35,6 +36,11 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+.list-container {
+  width: 300px;
+  height: 500px;
+  overflow-y: scroll;
 }
 li {
   list-style: none;

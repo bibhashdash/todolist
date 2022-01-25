@@ -1,6 +1,7 @@
 <template>
   <div class="app-wrapper">
     <h1>To Do List</h1>
+
     <form @submit.prevent="addToList" class="task-input">
       <input
         placeholder="Enter task..."
@@ -13,15 +14,16 @@
       </div>
     </form>
     <Listcontainer :list="list" />
+    <Results :list="list" />
   </div>
 </template>
 
 <script>
 import Listcontainer from "./components/Listcontainer.vue";
-
+import Results from "./components/Results.vue";
 export default {
   name: "App",
-  components: { Listcontainer },
+  components: { Listcontainer, Results },
   data() {
     return {
       tempItem: "",
@@ -31,12 +33,17 @@ export default {
 
   methods: {
     addToList() {
-      this.list.push(this.tempItem);
+      this.list.unshift(this.tempItem);
       this.tempItem = "";
       // console.log(this.list);
 
       // to do: Validation and empty inputs
     },
+    // computeResult() {
+    //   const nodeList = document.querySelectorAll(".strikethrough");
+    //   // console.log(nodeList);
+    //   return nodeList.length;
+    // },
   },
 };
 </script>
@@ -52,6 +59,14 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+h1,
+h2 {
+  padding: 10px 3px;
+}
+h2 {
+  font-size: 1rem;
+}
+
 form {
   width: 300px;
   display: grid;
