@@ -1,26 +1,81 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app-wrapper">
+    <h1>To Do List</h1>
+    <form @submit.prevent="addToList" class="task-input">
+      <input
+        placeholder="Enter task..."
+        type="text"
+        v-model="tempItem"
+        required
+      />
+      <div @click="addToList" class="submit">
+        <i class="fas fa-arrow-right icon"></i>
+      </div>
+    </form>
+    <div class="items-container">
+      <Listitem :list="list" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Listitem from "./components/Listitem.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Listitem,
+  },
+  data() {
+    return {
+      tempItem: "",
+      list: [],
+    };
+  },
+
+  methods: {
+    addToList() {
+      this.list.push(this.tempItem);
+      this.tempItem = "";
+      console.log(this.list);
+
+      // to do: Validation and empty inputs
+    },
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Quicksand", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+form {
+  width: 300px;
+  display: grid;
+  grid-template-columns: 90% 10%;
+}
+input {
+  border: none;
+  border-bottom: 2px solid rgb(182, 182, 182);
+  font-family: "Quicksand", sans-serif;
+  padding: 5px;
+}
+.icon {
+  font-size: 1rem;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.items-container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
 }
 </style>
