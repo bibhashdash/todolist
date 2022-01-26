@@ -2,6 +2,9 @@
   <div class="app-wrapper">
     <h1>To Do List</h1>
 
+    <!-- Form input to enter a task-->
+    <!-- v-model to a temporary variable tempItem -->
+
     <form @submit.prevent="addToList" class="task-input">
       <input
         placeholder="Enter task..."
@@ -13,8 +16,18 @@
         <i class="fas fa-arrow-right icon"></i>
       </div>
     </form>
+
+    <!-- List container component  -->
+    <!-- returns a list of all the tasks -->
+    <!-- bind the list array and pass it as prop to Listcontainer.vue component -->
     <Listcontainer :list="list" />
+
+    <!-- footer -->
+    <!-- contains results -->
+    <!-- also contains CLEAR LIST button -->
+
     <div class="footer">
+      <!-- bind the list array and pass it as prop to Results component -->
       <Results :list="list" />
       <div class="clear-list" @click="clearList">
         <p>Clear List! <i class="fas fa-ban"></i></p>
@@ -32,11 +45,16 @@ export default {
   components: { Listcontainer, Results },
   data() {
     return {
+      // temp variable to store the user input
       tempItem: "",
+
+      // array of all task items
       list: [],
     };
   },
 
+  // handle page refresh
+  //using mounted hook
   mounted() {
     const myStorage = window.localStorage;
     console.log(myStorage);
@@ -47,21 +65,23 @@ export default {
     }
   },
   methods: {
-    // handlePageReload() {
-    //   window.addEventListener("load", function () {
-    //     const myStorage = window.localStorage;
-    //     for (const [key, value] of Object.entries(myStorage)) {
-    //       this.list.push(value);
-    //     }
-    //   });
-    // },
     addToList() {
+      // add temp variable value to the top of task items array
+      // unshift means it shows at the top of to do list
       this.list.unshift(this.tempItem);
+
+      // generate random ID to allow local storage
       const randomID = Date.now();
-      console.log(randomID);
+
+      // add to local storage
       localStorage.setItem(randomID, this.tempItem);
+
+      // clear temp variable
       this.tempItem = "";
     },
+
+    // clear the list
+    // also clears it from local storage
     clearList() {
       this.list = [];
       localStorage.clear();

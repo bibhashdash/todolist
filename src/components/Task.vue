@@ -15,9 +15,11 @@
 <script>
 export default {
   name: "Task",
+  // receive taskName and entire array as props
   props: ["taskName", "list"],
   data() {
     return {
+      // for when we click task finished
       isTaskFinished: false,
     };
   },

@@ -9,7 +9,7 @@
 <script>
 export default {
   name: "Results",
-  props: ["list", "completedTally"],
+  props: ["list"],
   data() {
     return {
       total: 0,

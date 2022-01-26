@@ -1,6 +1,15 @@
 <template>
+  <!-- contains the list of tasks // returns the full list each render -->
   <ul class="list-container">
+    <!-- output a dynamic list using v-for -->
+    <!-- Using List array received as prop -->
+    <!-- This is in lieu of a data property below -->
+    <!-- SO the list array IS the data -->
+    <!-- Ergo can be iterated upon and rendered -->
     <li v-for="taskName in list" :key="taskName">
+      <!-- Use Task component to render each individual task -->
+      <!-- Passing iteration variable taskName into Task.vue component -->
+      <!-- Also passing entire list array into Task.vue component -->
       <Task :taskName="taskName" :list="list" />
     </li>
   </ul>
@@ -24,8 +33,11 @@ import Task from "./Task.vue";
 
 export default {
   name: "Listcontainer",
+
+  // Receive List array as a prop from App.vue
   props: ["list"],
   components: {
+    // receive Task as a component
     Task,
   },
 };
