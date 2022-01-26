@@ -1,8 +1,8 @@
 <template>
   <div class="results">
-    <h2>Completed: {{ completedTally }}</h2>
-    <h2>Pending: {{ pendingTally }}</h2>
-    <h2>Total: {{ list.length }}</h2>
+    <!-- <h2>Completed: {{ finalListISwear.length }}</h2> -->
+    <!-- <h2>Pending: {{ pendingTally }}</h2> -->
+    <h2 class="totalTally">Total: {{ list.length }}</h2>
   </div>
 </template>
 
@@ -15,7 +15,6 @@ export default {
       total: 0,
     };
   },
-  methods: {},
 };
 </script>
 
@@ -24,4 +23,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
+/* .totalTally {
+  color: #3ce7e4;
+} */
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="task">
     <p>
+      -
       <span :class="{ strikethrough: isTaskFinished }">{{ taskName }}</span>
     </p>
     <div class="action-buttons">
@@ -41,10 +42,18 @@ export default {
 <style>
 .task {
   display: grid;
-  grid-template-columns: 70% auto;
+  grid-template-columns: 60% auto;
   align-items: center;
+  padding: 0 5px;
+  padding-left: 10px;
 }
-
+.action-buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+.action-buttons .fas {
+  color: #f4f7fb;
+}
 .strikethrough {
   text-decoration: line-through;
   text-decoration-color: red;

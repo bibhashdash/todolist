@@ -38,9 +38,17 @@ ul {
   padding: 0;
 }
 .list-container {
+  margin-top: 1rem;
+  border-bottom: 2px solid #fbf4f496;
+  /* border-radius: 10px; */
   width: 300px;
-  height: 500px;
+  height: 400px;
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.list-container::-webkit-scrollbar {
+  display: none;
 }
 li {
   list-style: none;
