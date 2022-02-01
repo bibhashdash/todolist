@@ -28,9 +28,19 @@ export default {
       this.isTaskFinished = !this.isTaskFinished;
     },
     deleteTask() {
+      const myStorage = window.localStorage;
+      console.log(myStorage);
+      if (myStorage) {
+        for (const [key, value] of Object.entries(myStorage)) {
+          if (this.taskName === value) {
+            localStorage.removeItem(key);
+          }
+        }
+        console.log(myStorage);
+      }
       const taskNameIndex = this.list.indexOf(this.taskName);
       this.list.splice(taskNameIndex, 1);
-      console.log(this.list);
+      // console.log(this.list);
     },
     editTaskName() {
       const taskNameIndex = this.list.indexOf(this.taskName);

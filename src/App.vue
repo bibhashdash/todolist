@@ -57,7 +57,7 @@ export default {
   //using mounted hook
   mounted() {
     const myStorage = window.localStorage;
-    console.log(myStorage);
+    // console.log(myStorage);
     if (myStorage) {
       for (const [key, value] of Object.entries(myStorage)) {
         this.list.push(value);
